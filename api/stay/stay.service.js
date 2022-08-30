@@ -27,16 +27,6 @@ async function query(filterBy = { dest: "", price: 0 }) {
       newStays = stays.filter((stay) => stay.labels === filterBy.labels)
     }
 
-    const reviews = newStays.map((stay) => stay.reviews)
-    reviews.filter((review) => {
-      if (!review.by.imgUrl)
-        return (
-          review.by.imgUrl ===
-          "https://xsgames.co/randomusers/avatar.php?g=male"
-        )
-      else return review.by.imgUrl
-    })
-
     return newStays
   } catch (err) {
     logger.error("cannot find stays", err)
