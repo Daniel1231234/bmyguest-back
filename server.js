@@ -42,7 +42,6 @@ const stayRoutes = require("./api/stay/stay.routes")
 const orderRoutes = require("./api/order/order.routes")
 const { connectSockets } = require("./services/socket.service")
 
-
 // routes
 const setupAsyncLocalStorage = require("./middlewares/setupAls.middleware.js")
 app.all("*", setupAsyncLocalStorage)
@@ -64,6 +63,6 @@ app.get("/**", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"))
 })
 
-http.listen(port, () => {
+app.listen(port, () => {
   logger.info("Server is running on port: " + port)
 })
